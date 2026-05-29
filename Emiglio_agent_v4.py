@@ -1,9 +1,3 @@
-"""
-*- Installation:
-  pip install langgraph langchain-anthropic langchain \
-              langchain-community tavily-python anthropic streamlit
-"""
-
 import os, json, re, subprocess, textwrap, warnings
 from datetime import datetime
 from pathlib import Path
@@ -20,9 +14,9 @@ from langchain_community.tools.tavily_search import TavilySearchResults
 from langgraph.graph import StateGraph, END
 from langgraph.graph.message import add_messages
 
-# ─────────────────────────────────────────────────────────────o
+
 # API KEYS
-# ─────────────────────────────────────────────────────────────o
+
 os.environ.setdefault("ANTHROPIC_API_KEY", "YOUR_ANTHROPIC_KEY")
 os.environ.setdefault("TAVILY_API_KEY",    "YOUR_TAVILY_KEY")
 
@@ -46,9 +40,8 @@ def _log_step(tool_name: str, description: str, result_preview: str = ""):
     })
 
 
-# ═════════════════════════════════════════════════════════════o
+
 # EMIGLIO TOOLS
-# ═════════════════════════════════════════════════════════════o
 
 @tool
 def summarize_text(text: str, style: str = "concise") -> str:
@@ -310,9 +303,9 @@ def search_web(query: str) -> str:
         return f"Search not available: {e}"
 
 
-# ─────────────────────────────────────────────────────────────o
+
 # Tool registry
-# ─────────────────────────────────────────────────────────────o
+
 TOOLS = [
     summarize_text, draft_email, save_file, read_file, list_files,
     extract_key_points, translate_text, create_report,
@@ -321,9 +314,9 @@ TOOLS = [
 TOOLS_BY_NAME = {t.name: t for t in TOOLS}
 
 
-# ═════════════════════════════════════════════════════════════o
+
 # EMIGLIO PERSONALITY AND PROMPT
-# ═════════════════════════════════════════════════════════════o
+
 EMIGLIO_SYSTEM = """You are Emiglio, an AI workflow automation assistant.
 Your name is Emiglio and that is how you always introduce yourself.
 
@@ -357,9 +350,9 @@ AVAILABLE TOOLS:
 """
 
 
-# ═════════════════════════════════════════════════════════════o
+
 # STATE AND LANGGRAPH
-# ═════════════════════════════════════════════════════════════o
+
 class EmigliState(TypedDict):
     messages: Annotated[Sequence[BaseMessage], add_messages]
 
@@ -411,9 +404,9 @@ _builder.add_conditional_edges("agent", should_continue, {"tools": "tools", "end
 emiglio_graph = _builder.compile()
 
 
-# ═════════════════════════════════════════════════════════════o
+
 # PUBLIC API
-# ═════════════════════════════════════════════════════════════o
+
 def run_workflow(
     user_message: str,
     history: list[dict] | None = None,
@@ -459,9 +452,9 @@ def run_workflow(
     }
 
 
-# ─────────────────────────────────────────────────────────────o
+
 # Quick terminal demo
-# ─────────────────────────────────────────────────────────────o
+
 if __name__ == "__main__":
     DEMO_TASKS = [
         "Hello Emiglio, what can you do?",
