@@ -1,18 +1,12 @@
-"""
-Emiglio — Streamlit Frontend
-Run: streamlit run emiglio_app.py
-"""
-
 import streamlit as st
 from pathlib import Path
 from datetime import datetime
 
-# ── Import the agent ───────────────────────────────────────
+# Import the agent
 from emiglio_agent import run_workflow, WORKSPACE
 
-# ═════════════════════════════════════════════════════════════o
+
 # PAGE CONFIGURATION
-# ═════════════════════════════════════════════════════════════o
 st.set_page_config(
     page_title="Emiglio — AI Workflow Assistant",
     page_icon="Emiglio.v4",
@@ -20,9 +14,8 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ═════════════════════════════════════════════════════════════o
+
 # CSS — Retro-futuristic aesthetic: terminal green on black
-# ═════════════════════════════════════════════════════════════o
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap');
@@ -198,9 +191,9 @@ html, body, [class*="css"] {
 """, unsafe_allow_html=True)
 
 
-# ═════════════════════════════════════════════════════════════o
+
 # SESSION STATE
-# ═════════════════════════════════════════════════════════════o
+
 if "history"      not in st.session_state: st.session_state.history      = []
 if "all_steps"    not in st.session_state: st.session_state.all_steps    = []
 if "workspace"    not in st.session_state: st.session_state.workspace    = []
@@ -208,9 +201,9 @@ if "is_loading"   not in st.session_state: st.session_state.is_loading   = False
 if "last_example" not in st.session_state: st.session_state.last_example = ""
 
 
-# ═════════════════════════════════════════════════════════════o
+
 # WORKFLOW EXAMPLES
-# ═════════════════════════════════════════════════════════════o
+
 EXAMPLES = [
     "summarize this text + extract 5 key points + save in file 'summary': AI is transforming the medical industry by enabling more accurate and faster diagnoses. Machine learning algorithms can detect patterns in medical images that the human eye might miss. However, this raises debates about data privacy and medical responsibility.",
 
@@ -226,9 +219,9 @@ EXAMPLES = [
 ]
 
 
-# ═════════════════════════════════════════════════════════════o
+
 # SIDEBAR
-# ═════════════════════════════════════════════════════════════o
+
 with st.sidebar:
     # Sidebar header
     st.markdown("""
@@ -294,9 +287,8 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
 
-# ═════════════════════════════════════════════════════════════o
+
 # MAIN AREA
-# ═════════════════════════════════════════════════════════════o
 
 # Header
 st.markdown("""
@@ -328,9 +320,8 @@ with chat_container:
                 st.markdown(f'<div class="msg-bot">{msg["content"]}</div>', unsafe_allow_html=True)
 
 
-# ─────────────────────────────────────────────────────────────o
+
 # QUICK EXAMPLES
-# ─────────────────────────────────────────────────────────────o
 st.markdown('<div class="section-label">⚡ Quick examples</div>', unsafe_allow_html=True)
 
 cols = st.columns(3)
@@ -349,9 +340,8 @@ for i, (col, label, example) in enumerate(zip(cols * 2, example_labels, EXAMPLES
             st.rerun()
 
 
-# ─────────────────────────────────────────────────────────────o
+
 # USER INPUT
-# ─────────────────────────────────────────────────────────────o
 st.markdown('<div class="section-label">↳ Instruction for Emiglio</div>', unsafe_allow_html=True)
 
 # If there is a preloaded example, use it as the initial value
@@ -372,9 +362,8 @@ with col_send:
     send_clicked = st.button("▶  RUN", type="primary", use_container_width=True)
 
 
-# ─────────────────────────────────────────────────────────────o
+
 # PROCESSING
-# ─────────────────────────────────────────────────────────────o
 if send_clicked and user_input.strip():
     # Add user message to history
     st.session_state.history.append({"role": "user", "content": user_input.strip()})
