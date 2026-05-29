@@ -133,8 +133,8 @@ Emiglio recognizes compound instructions joined by `+`, `then`, `after`, or `and
 
 **1. Clone the repo**
 ```bash
-git clone https://github.com/Aureo01/NexusCore.git
-cd nexuscore
+git clone https://github.com/Aureo01/Autonomous_AI_Workflow.git
+cd Autonomous_AI_Workflow
 ```
 
 **2. Install dependencies**
