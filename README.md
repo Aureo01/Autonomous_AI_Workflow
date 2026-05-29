@@ -22,6 +22,33 @@ Emiglio is a conversational AI assistant built on LangGraph and Claude that exec
 
 ---
 
+## Getting started
+
+**1. Clone the repo**
+```bash
+git clone https://github.com/Aureo01/Autonomous_AI_Workflow.git
+cd Autonomous_AI_Workflow
+```
+
+**2. Install dependencies**
+```bash
+pip install langgraph langchain langchain-openai numpy torch
+```
+
+**3. Set your OpenAI API key**
+```bash
+export OPENAI_API_KEY=your-key-here
+```
+
+**4. Run**
+```bash
+python nexuscore_factory.py
+```
+
+You'll see the CLI dashboard start up. Press Enter to trigger a reasoning cycle, type `/exit` to shut down.
+
+---
+
 ## Installation
 
 ```bash
@@ -127,32 +154,6 @@ Emiglio recognizes compound instructions joined by `+`, `then`, `after`, or `and
 
 "Draft a professional email about the project delay + translate it to Spanish + save both versions"
 ```
----
-
-## Getting started
-
-**1. Clone the repo**
-```bash
-git clone https://github.com/Aureo01/Autonomous_AI_Workflow.git
-cd Autonomous_AI_Workflow
-```
-
-**2. Install dependencies**
-```bash
-pip install langgraph langchain langchain-openai numpy torch
-```
-
-**3. Set your OpenAI API key**
-```bash
-export OPENAI_API_KEY=your-key-here
-```
-
-**4. Run**
-```bash
-python nexuscore_factory.py
-```
-
-You'll see the CLI dashboard start up. Press Enter to trigger a reasoning cycle, type `/exit` to shut down.
 
 ---
 
