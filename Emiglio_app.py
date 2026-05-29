@@ -251,7 +251,7 @@ with st.sidebar:
         st.markdown('<div style="color:#00ff4440;font-size:.78rem;padding:8px 0">No steps executed yet.</div>', unsafe_allow_html=True)
 
     # Workspace
-    st.markdown('<div class="section-label">📁 Workspace</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-label"> Workspace</div>', unsafe_allow_html=True)
 
     workspace_files = sorted(WORKSPACE.iterdir()) if WORKSPACE.exists() else []
     if workspace_files:
@@ -293,7 +293,7 @@ with st.sidebar:
 # Header
 st.markdown("""
 <div class="emiglio-header">
-  <p class="emiglio-logo">⬡ EMIGLIO ⬡</p>
+  <p class="emiglio-logo"> 🔺EMIGLIO 🔺</p>
   <p class="emiglio-tagline">AI Workflow Automation Assistant // v2.0</p>
 </div>
 """, unsafe_allow_html=True)
@@ -322,16 +322,16 @@ with chat_container:
 
 
 # QUICK EXAMPLES
-st.markdown('<div class="section-label">⚡ Quick examples</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-label"> Quick examples</div>', unsafe_allow_html=True)
 
 cols = st.columns(3)
 example_labels = [
-    "📄 Summarize + extract points",
-    "✳️ Email + translate",
-    "❇️ Generate report",
-    "🔍 Search + summarize + email",
-    "🐍 Calculate with Python",
-    "📁 List files",
+    "Summarize + extract points",
+    "Email + translate",
+    "Generate report",
+    "Search + summarize + email",
+    "Calculate with Python",
+    "List files",
 ]
 for i, (col, label, example) in enumerate(zip(cols * 2, example_labels, EXAMPLES)):
     with col:
